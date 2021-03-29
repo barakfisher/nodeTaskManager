@@ -5,6 +5,7 @@ const auth = require("../middlewere/auth");
 const router = new express.Router();
 const sharp = require("sharp");
 const {sendWelcomeEmail, sendCancelationEmail} = require("../emails/account")
+
 const isValidUpdate = (allowedUpdates, updateData) => {
   const updateFields = Object.keys(updateData);
   const isValidOperation = updateFields.every((update) =>

@@ -1,9 +1,8 @@
 const sgMail = require("@sendgrid/mail");
 
-const sendgridApiKey =
-  "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";
 
-sgMail.setApiKey(sendgridApiKey);
+
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 // sgMail.send({
 //   to: "barakfisher@gmail.com",
@@ -13,9 +12,10 @@ sgMail.setApiKey(sendgridApiKey);
 // });
 
 const sendWelcomeEmail = (email, name) => {
+  console.log("sending Email")
   sgMail.send({
     to: email,
-    from: "barakfisher@gmail.com",
+    from: "barakf@pointer4u.co.il",
     subject: "Welcome to task manager",
     // text: `Welcome to the app ${name}. Let me know how you get along with the app`,
     html:'<h3>Welcome to the app ${name}. Let me know how you get along with the app</h3>'
@@ -25,8 +25,8 @@ const sendWelcomeEmail = (email, name) => {
 const sendCancelationEmail = (email, name) =>{
     sgMail.send({
         to: email,
-        from: "barakfisher@gmail.com",
-        subject: "Sorry to see yoy go",
+        from: "barakf@pointer4u.co.il",
+        subject: "Sorry to see you go",
         // text: `Welcome to the app ${name}. Let me know how you get along with the app`,
         html:'<h3> Goodbye ${name}, hope to see you soon</h3>'
       });
